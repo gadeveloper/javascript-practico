@@ -8,12 +8,21 @@ function calcularPrecioConDescuento(precio,descuento){
 function onClickButtonPriceDiscount()
 {
     const InputPrice = document.getElementById("InputPrice")
-    const PriceValue = InputPrice.value
+    const PriceValue = parseInt(InputPrice.value)
 
     const InputDiscount = document.getElementById("InputDiscount")
-    const Discount = InputDiscount.value
+    const Discount = parseInt(InputDiscount.value)
 
-    const precioConDescount = calcularPrecioConDescuento(PriceValue,Discount)
+    const InputCupon = document.getElementById("InputCupon")
+    const Cupon = parseInt(InputCupon.value)
+
+    let descuentototal = 0
+    if(Cupon > 0){
+        descuentototal = Discount+Cupon;
+    }else{ 
+        descuentototal = Discount;
+    }
+    const precioConDescount = calcularPrecioConDescuento(PriceValue,descuentototal)
     
     const result = document.getElementById("ResultP")
     result.innerText="El precio con descuento es: "+precioConDescount
